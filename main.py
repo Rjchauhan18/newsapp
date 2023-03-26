@@ -7,7 +7,7 @@ from patterns import Company_Name
 
 
 
-st.set_page_config(page_title="Stock Analiysis" , page_icon=":bar_chart:", layout="wide")
+st.set_page_config(page_title="Stock Analysis" , page_icon=":bar_chart:", layout="wide")
 
 
 
