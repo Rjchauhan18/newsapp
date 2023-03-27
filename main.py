@@ -177,7 +177,6 @@ if current_time<market_close_time and current_time > market_start_time:
             static_data()
           
 else:
-    st.write("Market is Closed")
     live_data()
     static_data()
 
