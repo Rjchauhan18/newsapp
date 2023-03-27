@@ -16,8 +16,13 @@ with st.sidebar:
     select_company = st.selectbox("Select Stock",company)
 
 select = Company_Name.get(select_company)
+
+data = stock_info.get_live_price(select)
+information= stock_info.get_quote_data(select)
+long_name = information["longName"]
 # st.markdown(select_company)
-st.header(select_company)
+st.header(long_name)
+
 start_date = dt.date.today()
 end_date = dt.date.today() + dt.timedelta(days=1)
 
@@ -58,8 +63,6 @@ placeholder = st.empty()
 # for i in range(200):  
 while True:
     
-    data = stock_info.get_live_price(select)
-    information= stock_info.get_quote_data(select)
     # informations
 
     exchange = information["exchange"]
