@@ -17,12 +17,12 @@ with st.sidebar:
 
 select = Company_Name.get(select_company)
 
+
 data = stock_info.get_live_price(select)
 information= stock_info.get_quote_data(select)
 long_name = information["longName"]
 # st.markdown(select_company)
 st.header(long_name)
-
 start_date = dt.date.today()
 end_date = dt.date.today() + dt.timedelta(days=1)
 
@@ -88,7 +88,7 @@ while True:
             
             st.metric(label="Live Price", value=regular_price)
             st.metric(label="Exchange", value=exchange)
-            st.metric(label="Previous High", value=day_high)
+            st.metric(label="Previous DAy High", value=day_high)
             st.metric(label="52 Week High", value =fifty2_week_high)
 
         with col2:
@@ -106,14 +106,25 @@ while True:
             st.metric(label="Previous Close", value=previous_close)
             st.metric(label="Day Range", value=day_range)
             st.metric(label="52 Week Range", value =fifty2_week_range)
-       
+        # with col4:
+        #     pass
 
 
+        # st.metric(label="count",value=i)
     if i == 1:
         
+        # data = stock_info.get_live_price(select)
+
+
+        # st.header(long_name)
+
+        # basic_info = st.container()
         stock_holder= st.container()
-        
+
+
+
         holders = stock_info.get_holders(select)
+        # st.write(holders)
 
         with stock_holder:
             hold1,hold2 = st.columns(2)
@@ -123,6 +134,8 @@ while True:
                 with majer_hold:
                         
                     majer_holders = holders["Major Holders"]
+                    # holst1 = majer_holders[0][0]
+                    # st.write( holst1)
                     with hold1:
                         st.header("Majer Holders")
                         st.write(majer_holders)
