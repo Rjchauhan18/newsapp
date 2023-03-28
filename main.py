@@ -162,20 +162,19 @@ placeholder = st.empty()
 
 
 current_time = time.strftime("%H:%M:%S", time.localtime())
-market_start_time = '9:15:00'
-market_close_time = '15:15:00'
+# market_start_time = '9:15:00'
+# market_close_time = '15:15:00'
 
 
-if current_time<market_close_time and current_time > market_start_time:
-# if current_time>market_close_time:
-    st.write('true')
-    while True:
-        
-        i += 1
-        live_data()
-            
-        if i == 1:
-            static_data()
+if  current_time < '15:15:00':
+    if current_time>'9:15:00':
+   
+        while True:
+            i += 1
+            live_data()
+
+            if i == 1:
+                static_data()
           
 else:
     live_data()
