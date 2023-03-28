@@ -168,6 +168,7 @@ market_close_time = '15:15:00'
 
 if current_time<market_close_time and current_time > market_start_time:
 # if current_time>market_close_time:
+    st.write('true')
     while True:
         
         i += 1
