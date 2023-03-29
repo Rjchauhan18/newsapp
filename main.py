@@ -23,10 +23,12 @@ select = Company_Name.get(select_company)
 try :
  name= stock_info.get_quote_data(select)
  long_name = name["longName"]
-except:
-    pass
 
-st.header(long_name)
+
+
+ st.header(long_name)
+except :
+    pass
 start_date = date.today()
 end_date = date.today() + timedelta(days=1)
 
