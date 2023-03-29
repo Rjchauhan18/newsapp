@@ -193,7 +193,7 @@ st.write(curr_clock)
 
 # ma = time.strftime("%H:%M:%S", time.localtime())
 # st.write(current_time_H)
-st.write(current_time)
+st.write(curr_clock)
 
 
 if curr_clock>='09:15:00':#9:15:00
