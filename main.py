@@ -153,7 +153,7 @@ def static_data():
     News(select)
 
 
-i=0
+# i=0
 
 placeholder = st.empty()
 # for i in range(200): 
@@ -167,15 +167,21 @@ current_time = time.strftime("%H:%M:%S", time.localtime())
 
 
 if current_time>='09:15:00':#9:15:00
-#     if  current_time <= '15:15:00': #15:15:00
+    # if  current_time <= '15:15:00': #15:15:00
    
+        
+        i=0
         while True:
             i += 1
+            
+            # with placeholder.container():
+            #         st.metric(label="Count" , value=i)
+            # # st.write(i)
             live_data()
-
+                
             if i == 1:
                 static_data()
-          
+        
 else:
     live_data()
     static_data()
