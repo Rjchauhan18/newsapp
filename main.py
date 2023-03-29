@@ -179,8 +179,14 @@ placeholder = st.empty()
 # current_time_H = time.strftime("%H", time.localtime())
 # current_time_M = time.strftime("%M", time.localtime())
 # current_time_S = time.strftime("%S", time.localtime())
+curr_time = time.localtime() 
 
-current_time = time.strftime("%H:%M:%S", time.localtime())
+curr_clock = time.strftime("%H:%M:%S", curr_time) 
+
+  
+
+st.write(curr_clock)
+#current_time = time.strftime("%H:%M:%S", time.localtime())
 # market_start_time_H = '9'
 # mt_start_time = '19:15:00'
 # mt_close_time = '20:15:00'
@@ -190,7 +196,7 @@ current_time = time.strftime("%H:%M:%S", time.localtime())
 st.write(current_time)
 
 
-if current_time>='09:15:00':#9:15:00
+if curr_clock>='09:15:00':#9:15:00
     # if  current_time <= '15:15:00': #15:15:00
    
         
