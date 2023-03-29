@@ -176,16 +176,16 @@ placeholder = st.empty()
 
 
 
-current_time_H = time.strftime("%H", time.localtime())
-current_time_M = time.strftime("%M", time.localtime())
-current_time_S = time.strftime("%S", time.localtime())
+# current_time_H = time.strftime("%H", time.localtime())
+# current_time_M = time.strftime("%M", time.localtime())
+# current_time_S = time.strftime("%S", time.localtime())
 
 current_time = time.strftime("%H:%M:%S", time.localtime())
 # market_start_time_H = '9'
-mt_start_time = '19:15:00'
-mt_close_time = '20:15:00'
+# mt_start_time = '19:15:00'
+# mt_close_time = '20:15:00'
 
-ma = time.strftime("%H:%M:%S", time.localtime())
+# ma = time.strftime("%H:%M:%S", time.localtime())
 # st.write(current_time_H)
 st.write(current_time)
 
