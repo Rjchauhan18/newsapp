@@ -20,9 +20,11 @@ with st.sidebar:
 
 select = Company_Name.get(select_company)
 
-
-name= stock_info.get_quote_data(select)
-long_name = name["longName"]
+try :
+ name= stock_info.get_quote_data(select)
+ long_name = name["longName"]
+except:
+    pass
 
 st.header(long_name)
 start_date = date.today()
