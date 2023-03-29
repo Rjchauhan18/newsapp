@@ -185,7 +185,7 @@ curr_clock = time.strftime("%H:%M:%S", curr_time)
 
   
 
-st.write(curr_clock)
+#st.write(curr_clock)
 #current_time = time.strftime("%H:%M:%S", time.localtime())
 # market_start_time_H = '9'
 # mt_start_time = '19:15:00'
@@ -193,15 +193,15 @@ st.write(curr_clock)
 
 # ma = time.strftime("%H:%M:%S", time.localtime())
 # st.write(current_time_H)
-st.write(curr_clock)
+#st.write(curr_clock)
 
 
-if curr_clock>='09:15:00':#9:15:00
+#if curr_clock>='09:15:00':#9:15:00
     # if  current_time <= '15:15:00': #15:15:00
    
         
-        i=0
-        while True:
+i=0
+while True:
             i += 1
             
             # with placeholder.container():
@@ -212,9 +212,9 @@ if curr_clock>='09:15:00':#9:15:00
             if i == 1:
                 static_data()
           
-else:
-    live_data()
-    static_data()
+#else:
+ #   live_data()
+   # static_data()
 
 # st.caption("Latest News")
 # st.write(latest)
