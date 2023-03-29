@@ -167,7 +167,7 @@ current_time = time.strftime("%H:%M:%S", time.localtime())
 
 
 if current_time>='9:15:00':#9:15:00
-    if  current_time <= '15:15:00': #15:15:00
+#     if  current_time <= '15:15:00': #15:15:00
    
         while True:
             i += 1
