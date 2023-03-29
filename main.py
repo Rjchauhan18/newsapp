@@ -4,11 +4,13 @@ import yahoo_fin as fin
 from yahoo_fin import stock_info
 from patterns import Company_Name
 from datetime import datetime as dt,date,timedelta
+from bs4 import BeautifulSoup
+import requests
+import os
 import time
- 
+# from newlib import data  as latest,link_list
 
 st.set_page_config(page_title="Stock Analiysis" , page_icon=":bar_chart:", layout="wide")
-
 
 company = list(Company_Name.keys())
 
@@ -36,31 +38,45 @@ Data = data(select,'1d','1m',start_date,end_date)
 # st.write(Data)
 
 
+
 def News(symbol):
+    st.caption(f"News of {select_company}")
     get_Data = yf.Ticker(symbol)
-    try:
+    try :
+
         #news section 
         NEWS = get_Data.news
-    except :
-        st.write("Information Not Available")
-        
-    st.header(f"News of {select_company} :")
+    except:
+        st.write("Don't get any News")
+    # st.header(f"News of {select_company} :")
     for i in range(len(NEWS)):
-        st.write("\n********************************\n")
-        st.write(f"{i+1}.   {NEWS[i]['title']}\n")
-        st.write(f"Publisher : {NEWS[i]['publisher']}\n")
-        st.write(f"Link : {NEWS[i]['link']}\n")
-        st.write(f"News type : {NEWS[i]['type']}\n\n\n")
+        title = NEWS[i]['title']
+        publisher =NEWS[i]['publisher']
+        link = NEWS[i]['link']
+        type = NEWS[i]['type']
         try:
-            
+            result = requests.get(link)
+            doc = BeautifulSoup(result.text, "html.parser")
+        except Exception as e:
+            st.write(e)
+        st.write("\n********************************\n")
+        st.subheader(f"{i+1}.   {title}\n")
+        st.write(f"Publisher : {publisher}\n")
+        st.write(f"Link : {link}\n")
+        st.write(f"News type : {type}\n\n\n")
+        print(doc.prettify())
+        try:
             resolutions = NEWS[i]['thumbnail']['resolutions']
             img = resolutions[0]['url']
             st.image(img)
-
         except:
             pass
+        expander = st.expander("Read more")
 
-
+        for links in doc.find_all('p'):
+            
+            expander.write(links.get_text())
+        
 def live_data():
         # data = stock_info.get_live_price(select)
         
@@ -90,6 +106,7 @@ def live_data():
 
             col1,col2,col3 = st.columns(3)
             with col1:
+                
                 
                 st.metric(label="Live Price", value=regular_price)
                 st.metric(label="Exchange", value=exchange)
@@ -121,7 +138,7 @@ def static_data():
         holders = stock_info.get_holders(select)
     
     except :
-        st.write("Information Not Available")
+        st.write("Holders information not available")
     # st.write(holders)
 
     with stock_holder:
@@ -153,17 +170,24 @@ def static_data():
     News(select)
 
 
-# i=0
-
 placeholder = st.empty()
 # for i in range(200): 
 
 
 
 
+current_time_H = time.strftime("%H", time.localtime())
+current_time_M = time.strftime("%M", time.localtime())
+current_time_S = time.strftime("%S", time.localtime())
+
 current_time = time.strftime("%H:%M:%S", time.localtime())
-# market_start_time = '9:15:00'
-# market_close_time = '15:15:00'
+# market_start_time_H = '9'
+mt_start_time = '19:15:00'
+mt_close_time = '20:15:00'
+
+ma = time.strftime("%H:%M:%S", time.localtime())
+# st.write(current_time_H)
+st.write(current_time)
 
 
 if current_time>='09:15:00':#9:15:00
@@ -181,10 +205,11 @@ if current_time>='09:15:00':#9:15:00
                 
             if i == 1:
                 static_data()
-        
+          
 else:
     live_data()
     static_data()
 
-
-
+# st.caption("Latest News")
+# st.write(latest)
+# st.write(link_list)
