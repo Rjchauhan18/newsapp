@@ -47,11 +47,8 @@ def News(symbol):
     st.caption(f"News of {select_company}")
     get_Data = yf.Ticker(symbol)
     try :
-
-        #news section 
         NEWS = get_Data.news
-   
-        # st.header(f"News of {select_company} :")
+          # st.header(f"News of {select_company} :")
         for i in range(len(NEWS)):
             title = NEWS[i]['title']
             publisher =NEWS[i]['publisher']
@@ -79,8 +76,16 @@ def News(symbol):
             for links in doc.find_all('p'):
 
                 expander.write(links.get_text())
-      except:
-        st.write("Don't get any News")
+     
+    except:
+         st.write("Don't get any News")
+        #news section 
+       
+        
+
+      
+   
+       
         
 def live_data():
         # data = stock_info.get_live_price(select)
