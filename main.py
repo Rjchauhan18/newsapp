@@ -50,36 +50,37 @@ def News(symbol):
 
         #news section 
         NEWS = get_Data.news
-    except:
-        st.write("Don't get any News")
-    # st.header(f"News of {select_company} :")
-    for i in range(len(NEWS)):
-        title = NEWS[i]['title']
-        publisher =NEWS[i]['publisher']
-        link = NEWS[i]['link']
-        type = NEWS[i]['type']
-        try:
-            result = requests.get(link)
-            doc = BeautifulSoup(result.text, "html.parser")
-        except Exception as e:
-            st.write(e)
-        st.write("\n********************************\n")
-        st.subheader(f"{i+1}.   {title}\n")
-        st.write(f"Publisher : {publisher}\n")
-        st.write(f"Link : {link}\n")
-        st.write(f"News type : {type}\n\n\n")
-        print(doc.prettify())
-        try:
-            resolutions = NEWS[i]['thumbnail']['resolutions']
-            img = resolutions[0]['url']
-            st.image(img)
-        except:
-            pass
-        expander = st.expander("Read more")
+   
+        # st.header(f"News of {select_company} :")
+        for i in range(len(NEWS)):
+            title = NEWS[i]['title']
+            publisher =NEWS[i]['publisher']
+            link = NEWS[i]['link']
+            type = NEWS[i]['type']
+            try:
+                result = requests.get(link)
+                doc = BeautifulSoup(result.text, "html.parser")
+            except Exception as e:
+                st.write(e)
+            st.write("\n********************************\n")
+            st.subheader(f"{i+1}.   {title}\n")
+            st.write(f"Publisher : {publisher}\n")
+            st.write(f"Link : {link}\n")
+            st.write(f"News type : {type}\n\n\n")
+            print(doc.prettify())
+            try:
+                resolutions = NEWS[i]['thumbnail']['resolutions']
+                img = resolutions[0]['url']
+                st.image(img)
+            except:
+                pass
+            expander = st.expander("Read more")
 
-        for links in doc.find_all('p'):
-            
-            expander.write(links.get_text())
+            for links in doc.find_all('p'):
+
+                expander.write(links.get_text())
+      except:
+        st.write("Don't get any News")
         
 def live_data():
         # data = stock_info.get_live_price(select)
