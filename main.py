@@ -18,7 +18,7 @@ with st.sidebar:
     select_company = st.selectbox("Select Stock",company)
 
 select = Company_Name.get(select_company)
-st.write(select)
+# st.write(select)
 
 
 # name= stock_info.get_quote_data(select)
