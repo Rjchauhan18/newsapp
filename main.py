@@ -1,10 +1,10 @@
 import yfinance as yf 
 import streamlit as st
 import yahoo_fin as fin
-from yahoo_fin import stock_info
+from yahoo_fin.stock_info import *
 from patterns import Company_Name
 from datetime import datetime as dt,date,timedelta
-
+import pandas as pd
 import time
  
 
@@ -19,9 +19,46 @@ with st.sidebar:
 
 select = Company_Name.get(select_company)
 # st.write(select)
+# # st.write(type(stock_info.get))
+# # n= get_company_info("aapl")[0]
+# # n = get_company_info_multi(["aapl", "goog"])[0]["Symbol"]
+# ticker= yf.Ticker(select)
+# d=st.json(ticker.info)
+# # st.write(d['symbol'])
+# st.write(d.maxAge)
+# st.json(ticker.get_info())
+# # d=list(d)
+# d = pd.DataFrame(d)
+# st.write(d)
+# # df= pd.DataFrame(ticker.get_info())
+# # st.write(d['currentPrice'])
+# print(type(d))
+# for dt in d:
+#     st.write(d[dt])
+# st.write(df["overallRisk"].values[0])
+# for d in df.columns :
+#         if d=='currentPrice':
+#              st.write(d)
+#         else:
+#             try:
+#                     st.write(f":green[{d} ]"+" : "+ str(df[d].values[0]))
+#             except Exception as e:
+#                 st.warning(d)
+
+# st.write("currentPrice : "+str(df["currentPrice"].values[0]))
+# st.write("city : "+df["city"].values[0])
+# st.write("website : "+df["website"].values[0])
+# st.write("industry : "+df["industry"].values[0])
+# st.write("sector : "+df["sector"].values[0])
+# st.info("longBusinessSummary : "+df["longBusinessSummary"].values[0])
+# st.write("shareHolderRightsRisk : "+str(df["shareHolderRightsRisk"].values[0]))
+
+# # name= stock_info.get_quote_data(select)
+# # d=pd.DataFrame(stock_info)
+# st.table(df)
 
 
-# name= stock_info.get_quote_data(select)
+# st.write(name)
 # long_name = name["longName"]
 
 # st.header(long_name)
@@ -34,7 +71,7 @@ def data(symbol,period,timeframe,start_date, end_date):
     first_val = tickerDf['Open'].values[:1]
     return first_val
 
-Data = data(select,'1d','1m',start_date,end_date)
+# Data = data(select,'1d','1m',start_date,end_date)
 # st.write(Data)
 
 
