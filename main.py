@@ -81,6 +81,7 @@ def News(symbol):
     #news section 
     try:
         NEWS = get_Data.news
+        st.write(NEWS)
         st.header(f"News of {select_company} :")
         for i in range(len(NEWS)):
             st.write("\n********************************\n")
