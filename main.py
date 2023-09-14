@@ -79,22 +79,25 @@ def News(symbol):
     get_Data = yf.Ticker(symbol)
 
     #news section 
-    NEWS = get_Data.news
-    st.header(f"News of {select_company} :")
-    for i in range(len(NEWS)):
-        st.write("\n********************************\n")
-        st.write(f"{i+1}.   {NEWS[i]['title']}\n")
-        st.write(f"Publisher : {NEWS[i]['publisher']}\n")
-        st.write(f"Link : {NEWS[i]['link']}\n")
-        st.write(f"News type : {NEWS[i]['type']}\n\n\n")
-        try:
-            
-            resolutions = NEWS[i]['thumbnail']['resolutions']
-            img = resolutions[0]['url']
-            st.image(img)
+    try:
+        NEWS = get_Data.news
+        st.header(f"News of {select_company} :")
+        for i in range(len(NEWS)):
+            st.write("\n********************************\n")
+            st.write(f"{i+1}.   {NEWS[i]['title']}\n")
+            st.write(f"Publisher : {NEWS[i]['publisher']}\n")
+            st.write(f"Link : {NEWS[i]['link']}\n")
+            st.write(f"News type : {NEWS[i]['type']}\n\n\n")
+            try:
+                
+                resolutions = NEWS[i]['thumbnail']['resolutions']
+                img = resolutions[0]['url']
+                st.image(img)
 
-        except:
-            pass
+            except:
+                pass
+    except:
+        st.warning("No news available")
 News(select)
 
 # def live_data():
