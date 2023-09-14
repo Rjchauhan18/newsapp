@@ -77,10 +77,11 @@ def data(symbol,period,timeframe,start_date, end_date):
 
 def News(symbol):
     get_Data = yf.Ticker(symbol)
+    # msft.news
 
     #news section 
     try:
-        NEWS = get_Data.get_news()
+        NEWS = get_Data.news
         st.write(NEWS)
         st.header(f"News of {select_company} :")
         for i in range(len(NEWS)):
@@ -97,7 +98,8 @@ def News(symbol):
 
             except:
                 pass
-    except:
+    except Exception as e:
+        st.write(e)
         st.warning("No news available")
 News(select)
 
